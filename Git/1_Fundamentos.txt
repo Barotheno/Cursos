@@ -1,0 +1,14 @@
+1 = INICIALIZAMOS UN PROYECTO
+
+    @ git init = Crea el repositorio 
+    @ git status = Nos dice los cambios que hubo
+
+2 = AGREGAMOS ARCHIVOS A WORKING TREE Y CONFIRMAMOS CAMBIOS
+
+    @ La rama 'master' es la rama principal en produccion
+    @ Cada 'commits' representa una versión
+    @ Los 'Untracked files' son los archivos modificados o nuevos que git entiende que no pertececen al tracking de las versiones de git.
+
+        @ git add = Introducimos un archivo en concreto en el tracking 
+        @ git add --all = Introducimos todos los cambios al tracked
+        
