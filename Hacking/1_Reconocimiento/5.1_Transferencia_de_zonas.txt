@@ -1,0 +1,19 @@
+1 = HOST
+
+    @ host -t ns zonetransfer.me
+
+        Nos devuelve unas dns 
+
+    @ host -l zonetransfer.me servidor_dns
+
+        Nos aplica la transferencia de zonas 
+
+2 = DIG
+
+    @ dig zonetransfer.me -t ns 
+
+        Nos devuelve servidores DNS mas detalladamente
+
+    @ dig axfr zonetransfer.com servidor_dns 
+
+        Nos devuelve información de la tranferencia mas detallada 

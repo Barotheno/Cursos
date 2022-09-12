@@ -1,14 +1,38 @@
-1 = INICIALIZAMOS UN PROYECTO
+1 = CREAR UN REPOSITORIO
 
-    @ git init = Crea el repositorio 
-    @ git status = Nos dice los cambios que hubo
+    @ git init = Nos crea el repositorio en la carpeta en la que indiquemos
 
-2 = AGREGAMOS ARCHIVOS A WORKING TREE Y CONFIRMAMOS CAMBIOS
+    @ git status = Nos muestra el estado de nuestro repositorio
 
-    @ La rama 'master' es la rama principal en produccion
-    @ Cada 'commits' representa una versión
-    @ Los 'Untracked files' son los archivos modificados o nuevos que git entiende que no pertececen al tracking de las versiones de git.
+    @ git add archivo(sin trackear, color rojo) = Trackeamos los archivos cambiados
 
-        @ git add = Introducimos un archivo en concreto en el tracking 
-        @ git add --all = Introducimos todos los cambios al tracked
-        
+    @ git add . = Actualiza todos los archivos rojos
+
+    @ git rm --cached archivo = Borra un archivo y lo vuelve a colocar en rojo (untracked)
+
+    @ git commits -m "mensaje" = Actualizamos repositorio 
+
+    @ git log archivo = Nos muestra los commit de un archivo
+
+2 = Configuracion informacion personal
+
+    @ git config = Guia de como funciona
+
+    @ git config --list = Nos muestra la configuracion por defecto
+
+    @ git config --global user.name "Nombre" / user.email "email"
+
+3 = ANALIZAR CAMBIOS EN LOS ARCHIVOS DEL PROYECTO
+
+    @ git show archivo = Muestra los cambios que hubo en un archivo
+
+    @ git diff PrimerHash SegundoHash
+
+    @ git log --stat
+
+4 = REGRESAR A UN COMMIT ANTERIOR
+
+    @ git reset CodigoHashCommit [--hard=Todo buelve a la version solicitada]
+
+    @ git checkout CodigoHashCommit = Muestra como era el archivo en dicho commit
+

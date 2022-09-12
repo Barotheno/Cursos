@@ -1,0 +1,15 @@
+1 = DIRB
+
+    @ dirb -h = Ayuda
+    @ dirb https://google.com/ wordlist 
+    
+2 = GOBUSTER
+    
+    @ Para ver directorios
+        gobuster dir -u http://dominioIP -w /rutaWordlist
+
+    @ Para ver archivos
+    gobuster dir -u http://dominioIP/directorio-en-el-que-buscar -w /rutaWordlist -x .php.txt
+
+
+

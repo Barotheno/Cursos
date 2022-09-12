@@ -1,0 +1,9 @@
+1 = OPERADORES
+
+    inurl: = páginas que tengan lo escrito en la URL
+
+    filetype: = Buscar determinados archivos 
+
+    intitle: = Buscar titulos
+
+    

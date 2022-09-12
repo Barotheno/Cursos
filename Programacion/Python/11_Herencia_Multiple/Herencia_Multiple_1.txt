@@ -1,0 +1,1 @@
+1 = Realizaremos varia clases enfocados a una figura geométrica, para ver la herencia múltiple

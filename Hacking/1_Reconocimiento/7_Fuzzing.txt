@@ -1,0 +1,15 @@
+Descubrir contenido en una web
+
+    1 = Utilizando FFUF
+
+        @ Directorios
+
+            ffuf -w /path/diccionario -u http://IPoDominio/FUZZ
+
+        @ Archivos
+
+            ffuf -w /path/diccionario -u http://IPoDominio/FUZZ.php
+
+        @ Subdominios
+
+            ffuz -w /diccionario -u http://FUZZ.dominio.com

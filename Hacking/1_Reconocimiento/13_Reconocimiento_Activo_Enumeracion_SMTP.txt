@@ -1,0 +1,9 @@
+1 = Para conectarnos a un servidor SMTP utilizamos Netcat
+
+    @ nc IP 25
+
+        Comandos: 
+
+            EHLO nombre_mi_host : Nos indica los comandos que existen
+            VRFY root@metasploitable : Verificamos si existe dicha cuenta
+            

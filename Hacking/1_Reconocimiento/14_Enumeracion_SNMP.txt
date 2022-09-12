@@ -1,0 +1,5 @@
+Puede proporcionarnos una información enorme
+
+    1 = SNMPWALK
+
+        snmpwalk -c public -v1 IP 

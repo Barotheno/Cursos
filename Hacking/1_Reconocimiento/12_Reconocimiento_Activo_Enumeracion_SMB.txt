@@ -1,0 +1,28 @@
+1 = IDENTIFICACION
+
+    @ A la hora de el escaneo de puertos debemos identificar dos puertos:
+        139 y 445
+        Servicio: netbios-ssn 
+        Version: Samba smbd etc
+
+2 = PODEMOS TIRAR UNOS ESCRIPS CON NMAP O UTILIZAR OTRO PROGRAMA PARA ESCANEAR SMB 
+
+    @ enum4linux: 
+
+        enum4linux -a IPobjetivo
+
+        1 = Nos proporciona la información de target especifico
+        2 = Intenta enumerar el dominio o workgroup y nos proporciona el nombre
+        3 = Toma información del netbios estatus
+        4 = Nos da los usuarios identificados
+        5 = Enumeración de carpetas compartidas
+        6 = Despues realiza fuerza bruta
+        7 = Realiza fuerza bruta sobre usuarios y grupos locales del sistema
+
+3 = INTENTAMOS ACEDER MEDIANTE smbclient con los distintos usuarios:
+
+    @ smbclient //ip/smb -U smb -p
+
+        -U = carpeta de el usuario
+        -p = contraseña vacia
+        

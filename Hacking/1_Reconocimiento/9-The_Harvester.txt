@@ -1,0 +1,6 @@
+1 = Funcionamiento
+
+    @ sudo theHarvester -d tesla.com -b google -l 100
+        -d = dominio 
+        -b = de donde queremos información, por ejemplo de google
+        -l = Limite de resultados
