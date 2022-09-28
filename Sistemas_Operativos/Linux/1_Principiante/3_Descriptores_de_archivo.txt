@@ -1,0 +1,21 @@
+@ CREAR UN DESCRIPTOR DE ARCHIVO 
+
+    Por ejemplo:
+
+        * exec 3<> file = Creamos un archivo descriptor 
+
+    Para escribir un resultado de un comando en el archivo file:
+
+        * comando >&3 
+
+    Se almacena en formato append, es decir va añadiendo lineas abajo, no sobrescribe.
+
+    Para cerrar un descriptor de archivo:
+
+        * exec 3>&-
+
+        No pierde el contenido, pero ya no se puede añadir ningun output
+
+    Para copiar el contenido de un descriptor a otro hacemos algo por ejemplo asi:
+
+        * exec 8>&5 = 8 es un descriptor y 5 es otro.

@@ -1,0 +1,37 @@
+1 = FLUJO EN UN REPOSITORIO DEMOTO
+
+    @ Entorno de desarrollo personal
+
+                            Git add                git commit
+
+        Directorio de trabajo | Preparacion o Staginh | Repositorio Local
+
+2 = INTRODUCCION A LAS RAMAS O BRANCHES DE GIT 
+
+    @ En principio nuestra rama principal es "master", las ramas son formas en las que podemos hacer cambios sin afectar
+      a la rama principal.
+
+    
+    @ La nueva rama se creará desde el lugar donde estamos actualmente en master 
+
+        * git branch nombre_rama = Creamos una nueva rama 
+            Si hacemos git status veremos que aun estamos en "master"
+
+        * git checkout nombre_rama = Nos movemos a la rama seleccionada
+        
+
+3 = FUSION DE RAMAS  CON GIT MERGE
+
+    @ Hacemos checkout a la rama en la que queremos hacer un merge, si estamos en una rama secundaria y queremos fusionarla con master,
+    debemos ir a master haciendo un:
+
+        * git checkout master
+        * git brunch = Muestra las ramas que tenemos
+
+    @ Para hacer el merge:
+
+        * git merge Nombre_De_Rama_Que_Fusionar
+
+4 = SOLUCIÓN DE CONFLICTOR AL HACER UN MERGE 
+
+    

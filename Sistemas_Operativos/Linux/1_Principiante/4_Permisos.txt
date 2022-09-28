@@ -1,0 +1,65 @@
+@@@ 1
+
+    .rw-r--r-- ruben1 ruben2
+
+        * ruben1 = Propietario 
+        * ruben2 = Grupo asignado
+
+        @ Primer digito, significado:
+
+            - = archivo
+            d = directorio 
+
+
+    * Se divide en tres partes: 
+
+    Cada parte debe ser "rwx": r(lectura)w(escritura)x(ejecutable)
+    El guión "-": No hay permiso ya sea en rectura, escritura o ejecucion
+
+        1 = Permiso propietario
+        2 = Permiso grupos 
+        3 = Permiso de otros
+
+@@@ 2 COMANDOS: 
+
+    @ chmod:
+
+        chmod o+w archivo_directorio
+            o = otros, g = grupos, u = propietario
+            w = escritura 
+            + = añadir permiso
+            - = quitar permiso
+
+    @ chgrp:
+
+        chdrp s4vitar directorio_archivo
+
+            * Permite cambiar el grupo de un archivo o directorio.
+
+    @ chown: asigna como propietario de un archivo un usuario 
+
+        chown usuario directorio 
+
+@@@ 3 CREACION DE USUARIOS:
+
+    @ useradd:
+
+        * useradd pepe -s /bin/bash -d /home/pepe 
+
+            -s = Indica la shell a utilizar
+            -d = Directorio de el usuario 
+
+    @ passwd: Asigna contraseña
+
+        * passwd usuario 
+@@@ 4 CREACION DE GRUPOS:
+
+    @ groupadd: Para crear grupos 
+
+        * groupadd nombre 
+
+    @ usermod -a -G Grupo Usuario: Asigna un usuario a un grupo 
+
+    
+    
+

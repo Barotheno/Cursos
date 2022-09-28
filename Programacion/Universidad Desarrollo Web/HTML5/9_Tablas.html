@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        thead {
+            background-color: black;
+            color: white;
+        }
+        td, th {/*Estilos celdas*/
+            border: 1px solid black;
+            padding: 5px 7px;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -26,21 +39,54 @@
             caption = Siempre debe ir antes que cualquiera de las etiquetas y despues de table, añade titulo a la tabla
             colgroup = Agrupan las columnas para agregarles estilos y demas
 
+        @ Orden de etiquetas descriptivas
+
+            thead = Cabecera, como los tutilos de cada columna
+            tbody = EL cuerpo principal donde la informacion
+            tfoot = Pie de la tabla, como totales, resultados totales etc
+        
+        
+
 
 
     -->
     <h1>Tablas</h1>
     <table>
-        <caption>USUARIOS</caption>
-            <tbody>
+        <colgroup span="4" style="background-color: red;"></colgroup><!--Agrupa las columnas para darle estilos, cada colgroup agrupa una de 
+            izquierda a derecha
+            La etiqueta span selecciona el numero de columnas.
+            Dentro de la etiqueta colgroup, la etiqueta "col" agrupará una unica columan independiente-->
+        <caption>USUARIOS</caption><!--Titulo de una tabla-->
+            <thead>
+                <tr><!--colspan = Definimos cuantas columnas queremos que rellene
+                        style = Podemos proporcionar estilos
+                        rowspan = Nos permite indicar cuantas filas ocupa una celda-->
+                    <th colspan="2">INFORMACION BASICA</th>
+                    <th colspan="2">APECTO FISICO</th>
+                </tr>
                 <tr>
-                    <td>Girlbert</td>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>CIUDAD</th>
+                    <th>TELEFONO</th>
+                </tr>
+            </thead>
+            <tbody><!--Cuerpo Tabla-->
+                <tr><!--Filas-->
+                    <td>Girlbert</td><!--Columnas-->
                     <td>Rodriguez</td>
                     <td>Santa Marta</td>
                     <td>91-528-91-07</td>
-                    <td></td>
 
                 </tr>
+            <tfoot>
+                <tr>
+                    <td>FIN</td>
+                    <td>FIN</td>
+                    <td>FIN</td>
+                    <td>FIN</td>
+                </tr>
+            </tfoot>
             </tbody>
         
     </table>

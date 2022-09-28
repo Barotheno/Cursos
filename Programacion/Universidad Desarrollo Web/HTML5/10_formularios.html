@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Empezamos un formulario con la etiqueta "form"
+        * action = Url donde el formulario enviará los datos
+        * method = get o post
+        * enctype = para enviar archivos, imagenes datos.
+        * target = -->
+    <form action="/1_Estructura_Basica.html" method="GET" enctype="text/plain">
+        <!--"input" campo para escribir texto.
+            *type: Tipo de texto o boton
+            *name: Donde indicamos el tipo de informacion que se emviará
+            *submit: Enviar-->
+        <input name="Nombre" type="text">
+        <input name="Apellido" type="text">
+        <input type="submit">
+    </form>
+
+    <!--Mas ejemplos de inputs-->
+
+    <form action="" method="GET">
+        <input type="checkbox" name="frutas" id="manzana" value="manzana" id=""><label for="manzana">Manzana</label><br>
+        <input type="checkbox" name="frutas" id="pera" value="pera" id=""><label for="pera">Pera</label><br>
+        <input type="checkbox" name="frutas" id="durazno" value="durazno" id=""><label for="durazno">Durazno</label><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!--Input tipo rango, suele ser utilizado para controlar un volumen, ancho de algo etc.-->
+
+    <form action="" method="get">
+        <input type="range" name="rango" min="0" max="250" value="0" step="20" id="">
+        <br>
+        <!--También podemos indicarle que tome los valores el tipo minimo y maximo de el elemento datalist-->
+        <input type="range" name="volumen" id="" list="listaVolumen">
+        <datalist id="listaVolumen">
+            <option value="10">
+            <option value="20">
+            <option value="30">
+            <option value="40">
+            <option value="50">
+            <option value="60">
+            <option value="70">
+            <option value="80">
+            <option value="90">
+            <option value="100">
+        </datalist>
+
+
+        <br>
+    </form>
+
+    <!--Formularios: select, option y Optgroup
+        Se utiliza para crear una lista desplegable de opciones,
+        con "optgroup creamos subtitulos en las opciones" -->
+    <label for="lenguaje">Seleccionar un lenguaje</label><br>
+    <select name="lenguaje" id="lenguaje">
+        <option value="">-- Seleccionar --</option>
+        <optgroup label="Programacion">
+            <option value="html">html</option>
+            <option value="c++">c++</option>
+            <option value="python">Python</option>
+        </optgroup>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Enviar</button><br>
+
+    <!--Fieldset y Legend: Agrupa varios elementos relacionandos y dibuja un cuadro, legend permite colocar un subtitulo en la linea del cuadro-->
+
+    <form action="" method="get">
+        <fieldset>
+            <legend>OPCIONES</legend>
+            <label for="lenguaje">Seleccionar un lenguaje</label><br>
+            <select name="lenguaje" id="lenguaje">
+                <option value="">-- Seleccionar --</option>
+                <optgroup label="Programacion">
+                    <option value="html">html</option>
+                    <option value="c++">c++</option>
+                    <option value="python">Python</option>
+                </optgroup>
+            </select>
+        </fieldset>
+    </form>
+    <br>
+    <!--Progress y Meter: Muestra el progreso de una tarea-->
+
+    <form action="" method="get">
+        <progress value="43" max="100"></progress><br>
+        <label for="">Disco local c:</label>
+        <meter value="70" min="1" max="100"></meter>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Textarea, define un control de entrada de varias lineas-->
+    <form action="" method="get">
+        <label for="mensaje">Escribe tu mensaje</label><br>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">Enviar</button>
+    </form><br>
+    <!--Output: Se usa para representar el resultado de algun carculo-->
+    <form oninput="salida.value = parseInt( numero.value ) * parseInt( numero2.value )" action="" method="get">
+        <input id="numero" type="number" value="0">*
+        <input id="numero2" type="number" min="0" max="250" value="0">=
+        <output id="salida"></output>
+
+        <br>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

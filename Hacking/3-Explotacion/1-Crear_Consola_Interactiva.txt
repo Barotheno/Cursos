@@ -1,0 +1,46 @@
+1 = Escribimos el siguiente comando:
+
+    script /dev/null -c bash 
+
+     * Y se nos abrirá una seuda consola.
+
+2 = Hacemos "control z" para dejarlo en segundo plano.
+3 = Escribimos:
+
+    stty ram -echo
+
+4 = Escribimos fg "no se ven pero las estamos escribiendo"
+
+    Y nos saldra "nc -nlvp 443"
+
+    Damos enter
+
+5 = Despues escribimos "reset"
+
+6 = Nos pedirá un tipo de terminal:
+
+    Escribimos:
+
+        xterm (recomendado)
+
+7 = Dentro de nuevo en la terminal objetivo vemos que si escribimos:
+
+    echo $TERM = No nos aparece xterm si no dumb.
+
+    Para cambiar esto escribimos:
+
+        1 = export TERM=xterm 
+        2 = export SHELL=bash 
+
+8 = FIN
+
+9 = Para terminar nos abrimos una consola aparte
+10 = Escribimos 
+
+    stty -a 
+
+    Buscamos las cifras de "rows" y "columns"
+
+11 = Bolvemos a la terminal de la victima y escribimos:
+
+    stty rows numero columns numero 

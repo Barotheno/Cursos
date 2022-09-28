@@ -1,0 +1,57 @@
+1 = USO DE GITHUB
+
+    1 = Primero creamos nuestro repositorio en GITHUB
+    2 = Damos click a la pestaña clonar repositorio y copiamos la URL HTML/SSh
+
+    3 = Ahora bolvemos a nuestro repositorio en el disco local nuestra.
+    4 = Indicamos a nuestro repositorio la URL a la que actualizarse:
+
+        * git remote add origin URL
+        * git remote -v = Vemos hacia donde apunta
+        
+    5 = Enviar repositorio a github:
+
+        * Primero integramos los cambios antes de hacer un push:
+            git pull origin master 
+        * git push origin master 
+    
+
+2 = LLAVES PUBLICAS Y PRIVADAS
+
+    1 = Creamos una llave SSH 
+
+        * ssh-keygen -t rsa -b 4096 -C "correo_electrónico"
+
+    2 = Copiamos y pegamos la llave publica y la pegamos en github.
+    3 = Copiamos la url en ssh de clonar repositorio 
+    4 = Hacemos lo siguiente:
+
+        * git remote set-url origin URL-ssh 
+
+3 = TAGS Y VERSIONES
+
+    * git log --all --graph = Podemos ver hasta la información de ramas mediante rallitas
+
+    @ Para añadir una version lo hacemos asi: "tag"
+
+        * git tag -a v0.1 -m "Descripcion" 1b56158
+        * git tag = Vemos los Tags o versiones que tenemos
+
+    @ Para saver a que hash esta relacionado un tag:
+
+        * git show-ref --tags 
+
+    @ Mandamos un tag a github 
+
+        "Debemos recordar que siempre se debe hacer un pull al master primero"
+
+            * git pull origin master 
+            * git push origin --tags 
+
+    @ Borrar tag:
+
+            * git tag -d nombre_tag
+        @ Borrarlo de gitbub:
+            * git push origin :refs/tags/nombre_tag
+
+    

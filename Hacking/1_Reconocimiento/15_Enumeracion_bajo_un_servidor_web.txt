@@ -1,0 +1,29 @@
+1 = Hacemos primero un whatweb
+
+2 = Nos vamos a la web del servidor y ojeamos que hay:
+
+    * Utilizando la herramienta "wappalycer"
+
+        Para poder ver de que tecnologias dispone y sus versiones
+
+3 = Si vemos el servidor o pagina web tiene un CMS como por ejemplo wordpress pero se ve mal, es decir como que no carga bien.
+
+        * Debemos ver el codigo fuente, haber si los links, imagenes etc hacen referencia a otra URL por que:
+
+            * Por que es posible que se esté utilizando el concepto "Virtual Host Routing"
+
+        * Si detectamos que se aplica "Virtual Host Routing" hacemos lo siguiente:
+
+            * nano /etc/host 
+                * Escribimos lo siguiente:
+
+                    IP[maquina servidor] dominioOculto
+
+        * Una ved realizado esto, ya nos encontrará todas las rutas de la pagina web
+
+4 = Ver si dispone de un "Web application firewall"
+
+    * Utilizando: "wafw00f"
+
+5 = Investigamos el cms con diferentes herramientas enfocadas a CMS 
+6 = Buscar que usuarios existen viendo las publicaciones etc.

@@ -1,0 +1,15 @@
+@ COMO BUSCAR LOS Script
+
+    locate .nse | xargs grep "categories"
+
+    @ Para ver exactamente las categorias que tenemos:
+
+        locate .nse | xargs grep "categories" | grep -oP '".*?"' | sort -u
+
+    @ Formas de lanzar un script:
+
+        1 = nmap -p445 ip --script "vuln and safe"
+
+    @ Utilizar un script en especifico
+
+        1 = nmap -p445 ip --script http-enum

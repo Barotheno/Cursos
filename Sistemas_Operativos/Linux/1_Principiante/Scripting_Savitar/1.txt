@@ -1,0 +1,13 @@
+@@@ Ejecutar archivos con un guion delante "-"
+
+    * comando ./-
+
+@@@ Listar de forma recursiva o abrir todo el contenido de un directorio:
+
+    * comando *; Ejemeplo == cat /home/badit0/*
+
+@@@ Activar o abrir ficheros on espacios
+
+    * comando "fichero con espacios" o 
+    * cat fichero\ in\ this\ filename
+

@@ -1,0 +1,216 @@
+El du (uso del disco) es el comando que se usa en Linux para verificar el tamaño del directorio, 
+incluidos sus otros contenidos, así como el tamaño de los archivos individuales.
+
+Cuando los archivos y directorios comenzaron a consumir una gran cantidad de espacio en el disco duro, 
+entonces du es el mejor comando para saber qué directorios o archivos causan esto.
+
+@@@@ Comando Du y sintaxis
+        La siguiente línea muestra la sintaxis del comando du:
+
+        du [options] [file or directory name]
+        De forma predeterminada, sin ninguna opción, muestra el uso de disco del archivo o directorio dado y para cada uno de los subdirectorios en bytes. Si no se menciona ningún nombre de archivo o directorio, entonces du commad muestra el uso del disco del directorio de trabajo actual.
+
+        # du /boot
+        2508    /boot/grub2/fonts
+        3068    /boot/grub2/i386-pc
+        5592    /boot/grub2
+        4       /boot/efi/EFI/centos
+        8       /boot/efi/EFI
+        12      /boot/efi
+        16      /boot/loader/entries
+        20      /boot/loader
+        152440  /boot
+        Du comando con -a La opción imprime el uso del disco de todos los archivos dentro del directorio.
+
+        # du -a /boot
+        7920    /boot/vmlinuz-4.18.0-147.5.1.el8_1.x86_64
+        3752    /boot/System.map-4.18.0-147.5.1.el8_1.x86_64
+        4       /boot/grub2/device.map
+        4       /boot/grub2/grub.cfg
+        4       /boot/grub2/grubenv
+        2504    /boot/grub2/fonts/unicode.pf2
+        2508    /boot/grub2/fonts
+        8       /boot/grub2/i386-pc/cs5536.mod
+        4       /boot/grub2/i386-pc/gcry_rsa.mod
+        8       /boot/grub2/i386-pc/lsacpi.mod
+        52      /boot/grub2/i386-pc/gcry_camellia.mod
+        4       /boot/grub2/i386-pc/cpio_be.mod
+        ......
+        152440  /boot
+        Puede ver que imprime el tamaño total al final del comando, donde ‘152440’ es el tamaño total (en bytes) del directorio ‘/ boot’.
+    
+@@@@ Obtener el tamaño total del directorio especificado
+        Para mostrar el tamaño total de un directorio específico, debe usar la opción -s pero no reportará subdirectorios. 
+        El siguiente ejemplo muestra el tamaño total del directorio ‘/ boot’.
+        
+        # du -s /boot
+        152440  /boot
+        Puede imprimir el uso total del disco desde varios directorios de la siguiente manera:
+        
+        # du -s /boot /var
+        152440 /boot
+        332168 /var
+@@@@ Formato legible por humanos
+        Hasta ahora, vemos que el tamaño del disco se mostraba en bytes que no es un formato muy legible por humanos. 
+        Para imprimir la salida en kilobyte (K), megabyte (M) y gigabyte (G) tenemos que usar -h opción.
+        
+        # du -h /boot
+        2.5M    /boot/grub2/fonts
+        3.0M    /boot/grub2/i386-pc
+        5.5M    /boot/grub2
+        4.0K    /boot/efi/EFI/centos
+        8.0K    /boot/efi/EFI
+        12K     /boot/efi
+        16K     /boot/loader/entries
+        20K     /boot/loader
+        149M    /boot
+        los --si la opción es como -h opción pero usa potencias de 1000 en lugar de 1024.
+        
+        # du --si /boot
+        2.6M    /boot/grub2/fonts
+        3.2M    /boot/grub2/i386-pc
+        5.8M    /boot/grub2
+        4.1k    /boot/efi/EFI/centos
+        8.2k    /boot/efi/EFI
+        13k     /boot/efi
+        17k     /boot/loader/entries
+        21k     /boot/loader
+        157M    /boot
+        Para obtener el tamaño total de un directorio especificado en un formato legible por humanos que se usa con mucha frecuencia en el comando du, use el siguiente comando:
+        
+        # du -sh /boot
+        149M /boot
+        Combinar gran tamaño total
+        Esto es muy útil cuando desea combinar el tamaño total en varios directorios. El siguiente ejemplo du command combine (-c) el tamaño total del disco especificado (-s) ‘/ boot’ y ‘/ var’ e imprima en la última línea en formato legible por humanos (-h):
+        
+        # du -csh /boot/ /var
+        149M    /boot/
+        317M    /var
+        466M    total
+        Muestra el tamaño individual de todos los archivos y directorios
+        Usando comodines
+        
+        # du -csh /boot/*
+        184K    /boot/config-4.18.0-147.5.1.el8_1.x86_64
+        180K    /boot/config-4.18.0-80.7.1.el8_0.x86_64
+        12K     /boot/efi
+        0       /boot/grub
+        5.5M    /boot/grub2
+        53M     /boot/initramfs-0-rescue-3e729c2d7c094902af0333ce40564ffe.img
+        23M     /boot/initramfs-4.18.0-147.5.1.el8_1.x86_64.img
+        23M     /boot/initramfs-4.18.0-80.7.1.el8_0.x86_64.img
+        16M     /boot/initramfs-4.18.0-80.7.1.el8_0.x86_64kdump.img
+        20K     /boot/loader
+        3.7M    /boot/System.map-4.18.0-147.5.1.el8_1.x86_64
+        3.6M    /boot/System.map-4.18.0-80.7.1.el8_0.x86_64
+        7.6M    /boot/vmlinuz-0-rescue-3e729c2d7c094902af0333ce40564ffe
+        7.8M    /boot/vmlinuz-4.18.0-147.5.1.el8_1.x86_64
+        7.6M    /boot/vmlinuz-4.18.0-80.7.1.el8_0.x86_64
+        149M    total
+        podemos imprimir el tamaño individual de cada archivo y directorios y luego combinar el tamaño total para imprimir en la última línea.
+        Comando Du con coincidencia de patrones
+        
+        # du -sch /bo*
+        149M    /boot
+        217M    /bootstrap
+        366M    total
+        Con el comando du puede realizar una coincidencia de patrones. En el siguiente comando, muestra cómo encontrar el tamaño del disco de todos los directorios que comienzan con ‘bo’.
+        Usando el comando du para obtener el tamaño aparente --apparent-size los
+        
+        # du --apparent-size /boot
+        2505    /boot/grub2/fonts
+        2544    /boot/grub2/i386-pc
+        5057    /boot/grub2
+        4       /boot/efi/EFI/centos
+        8       /boot/efi/EFI
+        12      /boot/efi
+        6       /boot/loader/entries
+        10      /boot/loader
+        151852  /boot
+        La opción imprime tamaños aparentes (cantidad real de datos en el archivo) en lugar del uso del disco.
+        Verifique el tamaño del directorio que incluye enlaces físicos -l Utilizando la --count-links o
+        
+        opción, los tamaños se cuentan muchas veces si están vinculados. De forma predeterminada, los vínculos físicos no se muestran.
+        
+        # ls -li
+         total 648
+         755150 -rw-r--r-- 1 root root 4719 Apr 19 00:46 file1
+         755152 -rw-r--r-- 2 root root 312519 Apr 19 00:47 file2
+         755152 -rw-r--r-- 2 root root 312519 Apr 19 00:47 file2.hard
+         755153 lrwxrwxrwx 1 root root 19 Apr 19 00:57 file2.soft -> /etc/sysconfig/init
+        Por ejemplo -l Aquí, file2.hard es el vínculo físico para file2. Ahora observe la salida con
+        
+        # du -ah
+         4.0K ./file2.soft
+         316K ./file2
+         12K ./file1
+         340K .
+        
+        # du -ahl
+         4.0K ./file2.soft
+         316K ./file2
+         12K ./file1
+         316K ./file2.hard
+         656K .
+        y sin ella. -L El comportamiento predeterminado de los enlaces simbólicos es no desreferenciarlos. Para desreferenciar enlaces simbólicos, --dereference o
+        
+        # du -ahL
+         8.0K ./file2.soft
+         316K ./file2
+         12K ./file1
+         344K .
+        se utiliza la opción
+        
+        (Tenga en cuenta que el tamaño de file2.soft ha cambiado ahora) -P los --no-dereference o
+        
+        La opción no elimina la referencia a estos enlaces simbólicos (que es el comportamiento predeterminado como se indicó anteriormente).
+        Muestra el uso del disco en los subdirectorios de nivel ‘N’
+        
+        Esta opción le indica al comando du que enumere los subdirectorios y su tamaño a nuestro nivel de profundidad deseado. --max-depth= Por ejemplo, el siguiente ejemplo enumera los directorios del primer nivel solo en el árbol de directorios actual y su tamaño. Aquí también se informa incluso el consumo total de espacio. En caso de que establezcamos el
+        
+        # du --max-depth=1 -h /boot/
+        7.1M /boot/grub
+        110M /boot/
+        a cero, entonces el comando du no listará ningún subdirectorio y solo informará el tamaño del directorio seleccionado.
+        Comando Du para excluir archivos --exclude El comando Du puede excluir un directorio específico usando el
+        
+        # du  --exclude=grub2 /boot/
+        4       /boot/efi/EFI/centos
+        8       /boot/efi/EFI
+        12      /boot/efi
+        16      /boot/loader/entries
+        20      /boot/loader
+        146848  /boot/
+        opción. En el siguiente ejemplo, he excluido el directorio ‘grub2’:
+        
+        # du -h –exclude=’*.obj’
+        # du -h –exclude=’*.jpg’
+        A continuación se muestran los dos ejemplos para mostrarle cómo excluir archivos ‘* .obj’ o ‘* .jpg’.
+        Utilice el comando du para imprimir la hora de modificación --time El tiempo de modificación de archivos y / o directorios 
+        (o de archivos / directorios en los subdirectorios) se puede mostrar con
+        
+        # du /boot/ --time
+        4    2017-03-23 15:03    /boot/grub/locale
+        2348    2017-03-23 15:03    /boot/grub/fonts
+        2480    2017-03-23 15:03    /boot/grub/i386-pc
+        7212    2017-04-05 08:31    /boot/grub
+        112180    2017-04-05 08:31    /boot/
+        opción.
+        Usa du con otros comandos
+        
+        El comando Du se puede combinar con otro comando usando tuberías (|). Veamos algunos ejemplos
+        
+        # du -skh * | sort -nr | head -3
+        386M    lib
+        252M    share
+        154M    lib64
+        Si queremos encontrar los 3 directorios principales por tamaño en el directorio de trabajo actual:
+        
+        # du -sk * | sort -n
+        12160   libexec
+        37552   sbin
+        58900   bin
+        70048   src
+        157456  lib64
+        257492  share
+        394504  lib

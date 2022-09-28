@@ -1,0 +1,2 @@
+@ Remota: Por ejemplo ejecutar un exploit desde mi maquina hacia la maquina remota 
+@ Local: Por ejemplo ecalada de privilegios, es cuando se ataca una vulnerabilidad ya estando en la maquina victima 

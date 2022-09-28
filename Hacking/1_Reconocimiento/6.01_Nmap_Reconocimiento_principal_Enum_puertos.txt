@@ -1,0 +1,26 @@
+
+    @ ping -c 1 IP = Comprovamos que la victima funciona y está activa
+
+        -c 1 = Indicamos que nos haga solo un pin 
+        ttl = Nos indica que sistema operativo es por retardo de respuesta [64/Linux, 128/windows]
+
+    @ Ejemplo 1: 
+
+        nmap IP -p- --open -T5 -v -n  -oG[oA] nombre_archivo
+
+            -n [Sin resolución DNS]
+
+    @ Una ved tenemos los puertos ya detectados hacemos lo siguiente:
+
+        nmap -sC -sV -p22,80 IP -oN nombre_archivo 
+
+            -sC = Script básicos
+            -sV = Detección de servicios
+            -oN = Exportar en formato nmap 
+
+    @ Tecnicas para agilizar nuestro escaneo:
+
+        * Mediante un Syn Scan
+
+        nmap -sS --min-rate 5000 -p- --open -v -n -Pn IP -oG archivo 
+

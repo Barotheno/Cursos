@@ -1,0 +1,16 @@
+@ wfuzz -c -L -t 400 --hc=404 -w /diccionario http://ip/FUZZ
+
+    -c = formato bonito con colorines
+    --hc = Ocultar un codigo de estado
+    FUZZ = Indicamos donde queremos hacer la fuerza bruta
+    -t = Hilos a los que trabajar
+    -L = follow redirect
+    --sc = Mostrar el codigo de estado indicado
+
+@@ BUSCAR POR EXTENSIONES
+
+    @ wfuzz -c -L -t 400 --hc=404 -w /diccionario -w diccionario_extensiones http://ip/FUZZ.FUZ2Z 
+
+        FUZ2Z = Probar siguiente diccionario de extensiones 
+
+        Nota: Para probar mas cadenas de directorios debemos añadir FUZ3Z y asi consecutivamente

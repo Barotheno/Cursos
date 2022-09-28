@@ -1,0 +1,19 @@
+@@@ Para buscar un archivo específico, ejecute el siguiente comando desde la raíz (/). 
+        El comando contiene el nombre exacto del archivo que está buscando.
+
+        find . -name file22.txt
+        Salida
+
+        ./test/file22.txt
+        ./sales/file22.txt
+
+@@@ Para encontrar un archivo en Linux con una determinada extensión, agréguelo al comando.
+
+        find . -name *.txt
+
+@@@ Utilice el siguiente comando para buscar archivos y directorios que comiencen con las letras qa. En nuestra computadora, 
+tenemos el qatree.txt y qa.txt archivos, así como un directorio con el nombre qa.
+
+        Si ejecutamos el comando;
+
+        find ./ -name "qa*"

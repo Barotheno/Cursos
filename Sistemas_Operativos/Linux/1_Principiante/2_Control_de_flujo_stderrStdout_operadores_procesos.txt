@@ -1,0 +1,36 @@
+@@ A tener en cuenta:
+
+    ** Si despues de un comando escribimos:
+        echo $? = Nos devuelve un codigo de estado de el comando anterior. 0 es exitoso, 1 fallido
+
+@ OPERADORES
+    ";"             = Nos permite ejecutar varios comandos a la ved
+    "&&[and]"       = Ejecuta el segundo comando, si el primer comando fue exitoso
+    "||[or]"        = Ejecuta el segundo comando en caso de que el primero sea erroneo
+
+
+@ STDERR
+
+    * stderr es la definicion de un error. Se referencia on el número 2.
+        * Para evitar que se muestren errores podemos escribir lo siguiente:
+
+            comando 2>/dev/null
+
+@ STDOUT
+
+    * stout es la deficinion de un flujo exitoso.
+        * Si queremos tambíen tapar tanto el stderr como el STDOUT:
+
+            comando &>/dev/null 
+                De esta forma no saldra nada, pero el comando si es aplicará
+
+@ SEGUNDO PLANO
+
+    * comando & = Resultado daria un PID por ejemplo: [1] 29910 PID a la derecha
+            Cada proceso tiene un PID.
+
+        Esto lo que hace esque cualquier aplicacion habierto desde consola sera hija del padre (consola) y dependerá de la consola.
+        Para evitar esto y que sea independiente escribimos:
+
+            * comando & disown
+

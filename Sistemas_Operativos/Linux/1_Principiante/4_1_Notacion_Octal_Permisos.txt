@@ -1,0 +1,18 @@
+
+@@@ Ejemplo:
+
+        rwx | r-x | r-x = Los guines son "0" y las letras "1"
+
+        111   101   101
+
+        210   210   210
+
+         7      5     5
+
+
+        1 Debemos pasar de binario a decimal, empezando desde la derecha con 0
+        2 Cada numero si el binario es uno "1" en la posicion que corresponda, se eleva al indice es decir "0" + el 
+          siguiente numero de derecha izquierda hasta llegar al ultimo numero de la izquierda. Si el binario es 0 no se cuenta.
+        3 Por ejemplo: 
+
+                4 3 2 1 0 = 4 elevado a cero, + 4 elevado a 1 y asi hasta 4, ecordadon que si el binario es 0 se salta al siguiente.
