@@ -54,4 +54,15 @@
         @ Borrarlo de gitbub:
             * git push origin :refs/tags/nombre_tag
 
+4 = MANEJO DE RAMAS
+
+    @ git show-branch = Nos muestra cuales son las ramas que existen y cual a sido su historia
+
+    @ git show-branch --all = Similar al anterior pero con mas datos 
+
+    @ gitk = Nos abre un software visual donde veremos toda la información 
+
+5 = CONSTRUIR MULTIPLES COLABORADORES EN UN REPOSITORIO 
+
+    
     

