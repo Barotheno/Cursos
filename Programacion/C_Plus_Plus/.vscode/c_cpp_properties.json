@@ -5,10 +5,11 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/c++/10",
-                "/usr/include/x86_64-linux-gnu/c++/10"
+                "/usr/include/x86_64-linux-gnu/c++/10",
+                "/usr/include/c++/10/parallel"
             ],
             "defines": [],
-            "compilerPath": "",
+            "compilerPath": "/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-clang-x64"
