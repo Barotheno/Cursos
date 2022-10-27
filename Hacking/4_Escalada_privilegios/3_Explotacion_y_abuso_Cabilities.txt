@@ -1,0 +1,31 @@
+@@ En ocasiones puede ser medio costoso convertirse root partiendo de un usuario no privilegiado. Lo que podemos hace 
+como modo alternativo es crear lo que se conoce como "persistencias"
+
+    * HAY DOS TIPOS DE PERSISTENCIAS:
+
+        1 = Conexiones: Por ejemplo si comprometemos una maquina y nos salimos y apagamos la máquina a la hora de meternos en 
+        consola poder bolvernos a meter en la máquina. 
+        2 = Privilegiada: Como estando en la máquina victima, podemos bolver a convertirnos en root rápidamente a traves de alguna 
+        cosa que allamaos dejado en el sistema.
+
+        * Para hacer esto lo que podriamos hacer es hace ruso de las capabilities.
+
+    * QUE ES UNA CAPABILITIE 
+
+        * Buscar capabilities:
+
+            getcap -r / 2>/dev/null
+
+        * Imaginemos que encontramos una capabilitie asi:
+
+            /usr/bin/python3.8 = cap_setuid+ep 
+
+            En pricipio si le hacemos "ls -l" vemos que no tiene permisos SUID y que esta correcto. Pues a traves de las capabilities, 
+            podemos añadirle una capabilitie de tipo "setuid"[que ya lo tiene], que nos permite controlar el ID bajo el cual operamos.
+            Por ejemplo añadiendo el "0" de root.
+
+        * Como se hace:
+
+            python3.8 -c 'import os; os.setuid(0); os.system("/bin/bash")'
+
+            Si presionamos enter ahora seriamos root.

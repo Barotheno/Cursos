@@ -1,0 +1,11 @@
+@@@ REALIZAMOS LA PRACTICA EN CONSOLA CON MYSQL @@@
+
+    1 = Habilitamos el servicio "mySQL"
+
+        service mysql start
+
+        * A traves de el usuario root nos conectamos a la base de datos:
+
+            mysql -uroot
+
+            

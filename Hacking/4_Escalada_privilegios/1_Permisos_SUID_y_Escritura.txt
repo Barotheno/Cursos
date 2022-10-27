@@ -1,0 +1,13 @@
+@@@ Nota: 
+
+    http://www.gtfobins.io = Encontraremos muchas injecciones de explotación de privilegios
+
+Si encontramos archivos SUID en especial Binarios, podemos buscar alguna bulneravilidad para poder entrar 
+
+@ ENUMERAR PRIVILEGIOS SUID:
+
+    find \-perm -4000 2>/dev/null
+
+@ ENUMERAR ARCHIVOS CON CAPACIDAD DE LECTURA:
+
+    fin \-writable 2>/dev/null

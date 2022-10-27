@@ -1,3 +1,16 @@
-1 = CONFIGURACION
+1 = CONFIGURACION CON EL NAVEGADOR WEB
+
+    * En burpsuite debemos ir a la pestana "Proxy" y despues a la pestaña "options"
+        * Debemos fijarnos en la IP de interface por defecto "127.0.0.1:8080"
+    
+    * En google chrome abrimos el menú y nos vamos a preferencias, en el buscador escribimos "network" y pulsamos
+      settings.
+        * Pinchamos la opcion "manual proxy" y en "HTTP proxy" colocamos 127.0.0.1 y el puerto 8080 y activamos la casilla
+          FTP/HTTPS
+
+2 = DEFINICION DE EL SCOPE Y COMPROMETIENDO UN SERVIDOR
+    @ SCOPE
+    * Dentro de la pestaña "Options" nos vamos a la pestaña "Proxy", nos vamos abajo del todo y buscamos la casilla que pone:
+        dont send items to proxy history or live tasks, if out of scope [La seleccionamos]
 
     

