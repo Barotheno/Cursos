@@ -8,4 +8,51 @@
 
             mysql -uroot
 
-            
+    2 = Ahora veremos que bases de datos tenemos:
+
+        show databases;
+
+    3 = Ahora reamos una base de datos que llamaremos colegio:
+
+        create database Colegio;
+
+    4 = Nos conectamos a la base de datos Colegio:
+
+        use Colegio;
+
+    5 = Vemos que tablas hay:
+
+        show tables;
+
+    6 = creamos tabla Alumnos(Columnas):
+
+        create table Alumnos(id int(2), username varhar(32), password varchar(32), contacto varchar(32));
+                                                        "COLUMNAS DE LA TABLA"
+
+    7 = Podemos ver las tablas con "show table" y las columnas con "describe":
+
+        show tables;
+        describe Alumnos;
+
+    8 = Insertamos datos:
+
+
+        insert into Alumnos(id, username, password, contacto) values(1, "administratos", "admin123$!..","616053939");
+        * Insertamos mas datos 3 mas.
+
+    9 = Ver el contenido de una tabla:
+
+        select * from Alumnos 
+
+    10 = Como filtrar:
+
+        select * from Alumnos where id = 1;
+
+    11 = A partir de aqui con el "id=1" son cosas tipicas que se ven desde la url.
+    12 = Por ejemplo si ponemos comillas simples al final como por ejemplo:
+
+        select * from Alumnos where id=1"";
+
+                    * Creamos un error del cual podemos aprovechar para listar informacion en la web de la base de datos.
+
+                    

