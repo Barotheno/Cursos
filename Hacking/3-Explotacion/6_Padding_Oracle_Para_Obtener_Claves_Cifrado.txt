@@ -1,0 +1,44 @@
+@@@@@@@@@
+
+    Un "padding oracle attack" es un ciberataque criptográfico para el modo cifrado CBC que permite descifrar un mensaje completo 
+    a partir de una dosis mínima de información acerca de su padding.
+
+    Se basa en que un sistema dé la "retroalimentacion de si el padding de un mensaje es corecto o no". Se trata de una cantidad
+    minima de información sobre el mensaje y parece no poner en riesgo su contenido. Lo cierto es que si este dato se uda
+    de la forma adecuada, sirve para desencriptar todo un mensaje cifrado con CBC.
+
+    Para entender que es un "padding oracle attack" es necesario saber como funciona el modo de operación de cifrado por bloques CBC 
+    y qué es el "padding" en criptografia.
+
+    1 @@
+
+        Estamos ante un panel de login sobre un CMS, ya sea Wordpress, Joomla etc. 
+        Suponemos que detrás hay un usuario "Admin".
+        Nos registramos como un usuario no privilegiado, es decir un usuario normal.
+
+    2 @@ 
+
+        Ahora que somos usuarios registrados, nos logeamos y vemos la cookie de session.
+        Podemos ver que está encriptada.
+
+    3 @@
+
+        Lo que podemos hacer es saber como se computa dicha clave de la cookie para despues 
+        poder computar una clave cookie para el usuario admin, atravaes de un [cookie hijacking]
+
+    4 @@
+
+        Con la herramienta "padbuster" tenemos que ir detectando el numero de bloques para despues 
+        poder crear nuestra cookie cifrada admin.
+
+    5 @@ 
+
+        Como se hace:
+
+            * padbuster "URL/login.php" "claveCifrada" [numeroBloquesProbar] -cookie "cookie entera" -encoding 0
+
+                Nos saldra un panel indicandonos la ID de las inyecciones posibles, le daremos al 2.
+
+    6 @@
+
+        Una ved obtenida la clave, la cambiamos en la cookie del navegador.

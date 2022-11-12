@@ -1,6 +1,6 @@
 "whoami"                            = Muestra el usuario actual
 "id"                                = Muestra a que grupos pertene un usuario 
-"whith"                             = Vemos hacia donde apunta un comando, es decir que ruta
+"which"                             = Vemos hacia donde apunta un comando, es decir que ruta
 "command -v "                       = Otra forma de ver una ruta absoluta
 
     @ Podemos ver la ruta de grupos en:
