@@ -62,7 +62,14 @@
 
     @ gitk = Nos abre un software visual donde veremos toda la información 
 
-5 = CONSTRUIR MULTIPLES COLABORADORES EN UN REPOSITORIO 
+5 = CONFIGURAR MULTIPLES COLABORADORES EN UN REPOSITORIO 
+
+    1 = Primero el colaborador, debe descargarse el repositorio (Proyecto en el que participará)
+    2 = El nuevo usuario podrá hacer commits con normalidad.
+    3 = Pero una ved que haga "push", saldrá un error. Esto sucede por que en el proceso el dueño del repositorio no le dio acceso.
+        * Como agregamos un colaborador:
+            + Vamos a [setting del repositorio] en la opcion [collaborators] podemos agregas el colaborador. 
+                * Introduciendo el email o nombre de usuario con el que el colaborador esta registrado en github.
 
     
     
